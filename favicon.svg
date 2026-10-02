@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="AgendaBook">
+  <style>
+    .ab-bg { fill: #e94560; }
+    .ab-fg { fill: #ffffff; }
+    @media (prefers-color-scheme: dark) {
+      .ab-bg { fill: #1a1a2e; }
+      .ab-fg { fill: #e94560; }
+    }
+  </style>
+  <rect class="ab-bg" x="0" y="0" width="64" height="64" rx="15" ry="15" />
+  <text
+    class="ab-fg"
+    x="32"
+    y="32.5"
+    text-anchor="middle"
+    dominant-baseline="central"
+    font-family="Inter, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
+    font-size="30"
+    font-weight="800"
+    letter-spacing="-0.5"
+  >AB</text>
+</svg>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/patitasbellasosorno-site/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO: los valores definitivos se inyectan en runtime desde `config`
+         (seo.titulo_pagina / seo.descripcion_meta) en la Fase 2. -->
+    <title>AgendaBook — Agenda tu cita online</title>
+    <meta name="description" content="Sistema de agendamiento online. Consulta disponibilidad y reserva tu cita." />
+
+    <!-- Tema antes del primer pintado (evita el parpadeo). Debe correr síncrono
+         y por eso vive aquí y no en el bundle. Replica la precedencia de
+         ThemeProvider: elección guardada ?? default del cliente (config
+         cacheado) ?? preferencia del sistema. -->
+    <script>
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('agendabook:theme')
+          var theme =
+            stored === 'light' || stored === 'dark' ? stored : null
+          if (!theme) {
+            var raw = localStorage.getItem('agendabook:config')
+            var config = raw ? JSON.parse(raw) : null
+            var preferred = config && config['negocio.tema_default']
+            if (preferred === 'claro') theme = 'light'
+            else if (preferred === 'oscuro') theme = 'dark'
+          }
+          if (!theme) {
+            theme = window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light'
+          }
+          document.documentElement.setAttribute('data-theme', theme)
+        } catch (e) {
+          // sin acceso a storage: se usa el tema por defecto del CSS
+        }
+      })()
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="/patitasbellasosorno-site/assets/index-vwF0lk4x.js"></script>
+    <link rel="stylesheet" crossorigin href="/patitasbellasosorno-site/assets/index-Bf5cLgYM.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
